@@ -17,10 +17,13 @@ from controls import COUNTIES, WELL_STATUSES, WELL_TYPES, WELL_COLORS
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("data").resolve()
 
+server = flask.Flask(__name__)
+
 app = dash.Dash(
-    __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}]
+    __name__, server=server, meta_tags=[{"name": "viewport", "content": "width=device-width"}]
 )
 server = app.server
+
 
 # Create controls
 county_options = [
